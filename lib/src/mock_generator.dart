@@ -1,8 +1,8 @@
 import 'dart:async';
+import 'package:analyzer/dart/element/type.dart';
 import 'package:analyzer/dart/element/element.dart';
 import 'package:build/build.dart';
 import 'package:source_gen/source_gen.dart';
-import 'package:analyzer/dart/element/type.dart';
 import '../mock.dart';
 
 class CreateMockGenerator extends GeneratorForAnnotation<Mock> {
@@ -31,7 +31,7 @@ class CreateMockGenerator extends GeneratorForAnnotation<Mock> {
         .join('');
 
     return '''
-      ${element.name} getMockTo${element.name}() {
+      ${element.name} _\$MockTo${element.name}() {
         const _faker = Faker();
         return ${element.name}(
           $result
@@ -66,7 +66,8 @@ class CreateMockGenerator extends GeneratorForAnnotation<Mock> {
     }
     if (type is InterfaceType) {
       if (type.element.isEnum) {
-        return '_faker.randomGenerator.element(${type.displayName}.values)';
+        final typeStr = type.getDisplayString();
+        return '_faker.randomGenerator.element($typeStr}.values)';
       }
     }
 
