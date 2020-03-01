@@ -1,0 +1,15 @@
+targets:
+  $default:
+    builders:
+      mock_generator|create_mock_annotation:
+        enabled: true
+
+builders:
+  todo_reporter:
+    target: ":create_mock_generator"
+    import: "package:mock_generator/builder.dart"
+    builder_factories: ["mockGeneratorBuilder"]
+    build_extensions: {".dart": [".create_mock_annotation.g.part"]}
+    auto_apply: dependents
+    build_to: cache
+    applies_builders: ["source_gen|combining_builder"]
