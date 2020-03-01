@@ -32,7 +32,7 @@ class CreateMockGenerator extends GeneratorForAnnotation<Mock> {
 
     return '''
       ${element.name} getMockTo${element.name}() {
-        final _faker = Faker();
+        const _faker = Faker();
         return ${element.name}(
           $result
         );
