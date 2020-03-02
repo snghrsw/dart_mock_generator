@@ -1,4 +1,4 @@
-name: Dart CI
+name: Dart Test CI
 
 on: [push]
 
