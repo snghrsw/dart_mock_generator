@@ -22,10 +22,10 @@ class CreateMockGenerator extends GeneratorForAnnotation<Mock> {
         .map((e) {
           // fieldでない場合
           if (e.kind.name != 'FIELD') {
-            return '\n${e.displayName}: ${e.constantValue}';
+            return '\n${e.displayName}: ${e.constantValue},';
           }
           // fieldの場合
-          return '\n${e.displayName}: ${_getMethod(e.type)},';
+          return '\n${e.displayName}: ${getMethod(e.type)},';
         })
         .toList()
         .join('');
@@ -39,46 +39,46 @@ class CreateMockGenerator extends GeneratorForAnnotation<Mock> {
       }
       ''';
   }
+}
 
-  String _getMethod(DartType type) {
-    if (type.toString() == 'DateTime') {
-      return '_faker.date.dateTime()';
-    }
+String getMethod(DartType type) {
+  if (type.toString() == 'DateTime') {
+    return '_faker.date.dateTime()';
+  }
 
-    if (type.isDartCoreInt) {
-      return '_faker.randomGenerator.integer(99999)';
-    }
+  if (type.isDartCoreInt) {
+    return '_faker.randomGenerator.integer(99999)';
+  }
 
-    if (type.isDartCoreString) {
-      return '_faker.address.city()';
-    }
+  if (type.isDartCoreString) {
+    return '_faker.address.city()';
+  }
 
-    if (type.isDynamic) {
-      return 'null';
-    }
-
-    if (type.isDartCoreDouble) {
-      return '_faker.randomGenerator.decimal()';
-    }
-
-    if (type.isDartCoreBool) {
-      return '_faker.randomGenerator.element([true, false])';
-    }
-    if (type is InterfaceType) {
-      if (type.element.isEnum) {
-        final typeStr = type.getDisplayString();
-        return '_faker.randomGenerator.element($typeStr).values)';
-      }
-    }
-
-    if (type.toString() == 'List') {
-      return '[]';
-    }
-
-    if (type.isObject) {
-      return 'null';
-    }
-
+  if (type.isDynamic) {
     return 'null';
   }
+
+  if (type.isDartCoreDouble) {
+    return '_faker.randomGenerator.decimal()';
+  }
+
+  if (type.isDartCoreBool) {
+    return '_faker.randomGenerator.element([true, false])';
+  }
+  if (type is InterfaceType) {
+    if (type.element.isEnum) {
+      final typeStr = type.getDisplayString();
+      return '_faker.randomGenerator.element($typeStr.values())';
+    }
+  }
+
+  if (type.toString() == 'List') {
+    return '[]';
+  }
+
+  if (type.isObject) {
+    return 'null';
+  }
+
+  return 'null';
 }
