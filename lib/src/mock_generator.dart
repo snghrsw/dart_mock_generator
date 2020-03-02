@@ -50,7 +50,7 @@ class CreateMockGenerator extends GeneratorForAnnotation<Mock> {
     }
 
     if (type.isDartCoreString) {
-      return '_faker.address.toString()';
+      return '_faker.address.city()';
     }
 
     if (type.isDynamic) {
