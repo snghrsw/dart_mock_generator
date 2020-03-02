@@ -68,7 +68,7 @@ String getMethod(DartType type) {
   if (type is InterfaceType) {
     if (type.element.isEnum) {
       final typeStr = type.getDisplayString();
-      return '_faker.randomGenerator.element($typeStr.values())';
+      return '_faker.randomGenerator.element($typeStr.values)';
     }
   }
 

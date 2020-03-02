@@ -18,7 +18,7 @@ void main() {
       final resultString = getMethod(TestEnum as DartType);
       expect(
         resultString,
-        equals('_faker.randomGenerator.element(TestEnum.values())'),
+        equals('_faker.randomGenerator.element(TestEnum.values)'),
       );
     });
   });
