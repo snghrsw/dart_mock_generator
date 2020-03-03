@@ -70,6 +70,18 @@ class CreateMockParser {
         }
       }
 
+      // Next Class
+      if (((_elm.type as InterfaceType).constructors ?? [])
+          .any((field) => field.name == 'createMock')) {
+        return '${_elm.type.getDisplayString()}.createMock()';
+      }
+
+      // Enum
+      if (((_elm.type as InterfaceType).constructors ?? [])
+          .any((field) => field.name == 'values')) {
+        return fakerEnumString(_elm.type.getDisplayString());
+      }
+
       if (_elm.type is List) {
         return '[]';
       }

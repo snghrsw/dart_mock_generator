@@ -1,6 +1,6 @@
 name: mock_generator
 description: faker base mock generator
-version: 1.0.11
+version: 1.0.12
 homepage: https://github.com/snghrym
 
 environment:
@@ -10,7 +10,6 @@ dependencies:
   build: '>=0.12.0 <2.0.0'
   source_gen: ^0.9.0
   faker: ^1.2.1
-  json_annotation: ^3.0.1
   analyzer: ^0.39.4
 
 dev_dependencies:
@@ -19,4 +18,3 @@ dev_dependencies:
   test: ^1.13.0
   pedantic_mono: any
   source_gen_test: any
-  json_serializable: ^3.2.5
