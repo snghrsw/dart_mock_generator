@@ -18,6 +18,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
 
+      - name: Run tests
+        run: pub run test
+  
       - name: Setup credentials
         run: | 
           mkdir -p ~/.pub-cache 
