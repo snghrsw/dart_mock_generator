@@ -1,4 +1,4 @@
-import 'package:mock_generator/mock.dart';
+import 'package:mock_generator/src/mock_annotation.dart';
 import 'package:test/test.dart';
 
 @Mock()
