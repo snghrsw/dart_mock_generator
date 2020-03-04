@@ -1,4 +1,4 @@
-import '../builder.dart';
+import 'package:mock_generator/src/mock_annotation.dart';
 
 @Mock()
 class TestEntity {

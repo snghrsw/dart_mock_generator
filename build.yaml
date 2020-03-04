@@ -7,7 +7,7 @@ targets:
 builders:
   todo_reporter:
     target: ":create_mock_generator"
-    import: "package:mock_generator/builder.dart"
+    import: "package:mock_generator/mock_generator.dart"
     builder_factories: ["mockGeneratorBuilder"]
     build_extensions: {".dart": [".create_mock_annotation.g.part"]}
     auto_apply: dependents

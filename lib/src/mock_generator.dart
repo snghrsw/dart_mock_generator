@@ -1,5 +1,3 @@
-library mock_generator.create_mock_genereator;
-
 import 'dart:async';
 import 'package:analyzer/dart/element/element.dart';
 import 'package:build/build.dart';
