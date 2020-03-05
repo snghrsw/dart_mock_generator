@@ -1,0 +1,14 @@
+name: mock_annotation
+description: faker base mock annotation
+version: 1.2.0
+homepage: https://github.com/snghrym
+
+environment:
+  sdk: ">=2.4.0 <3.0.0"
+
+dependencies:
+  faker:
+
+dev_dependencies:
+  pedantic_mono: 
+  
