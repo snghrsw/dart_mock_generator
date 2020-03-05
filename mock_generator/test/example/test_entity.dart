@@ -1,4 +1,4 @@
-import 'package:mock_generator/example/test_annotation.dart';
+import 'test_annotation.dart';
 
 @TestAnnotation()
 class TestEntity {

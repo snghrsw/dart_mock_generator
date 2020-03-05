@@ -2,8 +2,9 @@ import 'dart:async';
 
 import 'package:analyzer/dart/element/element.dart';
 import 'package:build/build.dart';
-import 'package:mock_generator/example/test_annotation.dart';
 import 'package:source_gen/source_gen.dart';
+
+import 'test_annotation.dart';
 
 class TestGeneratorAnnot extends GeneratorForAnnotation<TestAnnotation> {
   const TestGeneratorAnnot();

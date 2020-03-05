@@ -1,7 +1,8 @@
-import 'package:mock_generator/example/test_generator.dart';
 import 'package:source_gen/source_gen.dart';
 import 'package:test/test.dart';
 import 'package:build_test/build_test.dart';
+
+import 'example/annotated_generator.dart';
 
 void main() {
   group('TestGenerator', () {
