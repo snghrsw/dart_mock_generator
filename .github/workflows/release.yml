@@ -23,6 +23,7 @@ jobs:
       
       - name: Run tests
         run: pub run test
+        working-directory: ./mock_generator
   
       - name: Setup credentials
         run: | 
@@ -39,3 +40,8 @@ jobs:
 
       - name: Publish
         run: pub publish -f
+        working-directory: ./mock_generator
+
+      - name: Publish
+        run: pub publish -f
+        working-directory: ./mock_annotation
