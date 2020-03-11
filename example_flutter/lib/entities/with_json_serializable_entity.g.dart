@@ -20,13 +20,10 @@ WithJsonSerializableEntity _$MockToWithJsonSerializableEntity() {
 
 WithJsonSerializableEntity _$WithJsonSerializableEntityFromJson(
     Map<String, dynamic> json) {
-  return $checkedNew('WithJsonSerializableEntity', json, () {
-    final val = WithJsonSerializableEntity(
-      intValue: $checkedConvert(json, 'intValue', (v) => v as int),
-      stringValue: $checkedConvert(json, 'stringValue', (v) => v as String),
-    );
-    return val;
-  });
+  return WithJsonSerializableEntity(
+    intValue: json['intValue'] as int,
+    stringValue: json['stringValue'] as String,
+  );
 }
 
 Map<String, dynamic> _$WithJsonSerializableEntityToJson(

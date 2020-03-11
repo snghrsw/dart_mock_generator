@@ -9,6 +9,6 @@ part of 'enum_entity.dart';
 EnumEntity _$MockToEnumEntity() {
   const _faker = Faker();
   return EnumEntity(
-    enumValue: null,
+    enumValue: _faker.randomGenerator.element(TestSerialEnum.values),
   );
 }
