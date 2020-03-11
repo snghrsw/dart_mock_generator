@@ -12,20 +12,15 @@ class TestGeneratorAnnot extends GeneratorForAnnotation<TestAnnotation> {
   @override
   dynamic generateForAnnotatedElement(
       Element element, ConstantReader annotation, BuildStep buildStep) {
-    var code = '''
-    //It worked!
-    ''';
-    return code;
+    return '// generated';
   }
 }
 
 class TestGenerator extends Generator {
   const TestGenerator();
 
+  @override
   FutureOr<String> generate(LibraryReader library, BuildStep buildStep) async {
-    var code = '''
-    //It worked!
-    ''';
-    return code;
+    return '// generated';
   }
 }

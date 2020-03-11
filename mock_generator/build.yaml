@@ -9,7 +9,7 @@ builders:
     target: ":create_mock_generator"
     import: "package:mock_generator/mock_generator.dart"
     builder_factories: ["mockGeneratorBuilder"]
-    build_extensions: {".dart": [".create_mock_annotation.g.part"]}
+    build_extensions: {".dart": [".g.part"]}
     auto_apply: dependents
     build_to: cache
     applies_builders: ["source_gen|combining_builder"]

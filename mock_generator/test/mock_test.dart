@@ -1,4 +1,3 @@
-// import 'package:mock_generator/src/mock_annotation.dart';
 import 'package:mock_annotation/mock_annotation.dart';
 import 'package:test/test.dart';
 

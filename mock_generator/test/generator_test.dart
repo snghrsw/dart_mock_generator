@@ -7,8 +7,26 @@ import 'example/annotated_generator.dart';
 void main() {
   group('TestGenerator', () {
     test('Annotation Check', () async {
-      const generator = TestGenerator();
-      final builder = PartBuilder([generator], '.g.dart');
+      final builder = PartBuilder([const TestGenerator()], '.g.dart');
+
+      final assets = {
+        'mock_generator|lib/example/test_annotation.dart': _annotation,
+        'mock_generator|lib/example/test_entity.dart': _input,
+      };
+
+      final outputs = {
+        'mock_generator|lib/example/test_entity.g.dart': _output,
+      };
+
+      await testBuilder(
+        builder,
+        assets,
+        outputs: outputs,
+      );
+    });
+
+    test('Annotation Check2', () async {
+      final builder = PartBuilder([const TestGeneratorAnnot()], '.g.dart');
 
       final assets = {
         'mock_generator|lib/example/test_annotation.dart': _annotation,
@@ -28,9 +46,9 @@ void main() {
   });
 }
 
-String _input = '''
+String _input = r'''
 
-import 'package:mock_generator/example/test_annotation.dart';
+import 'package:mock_generator/lib/example/test_annotation.dart';
 
 part 'test_entity.g.dart';
 
@@ -55,8 +73,7 @@ part of 'test_entity.dart';
 // TestGenerator
 // **************************************************************************
 
-// int
-// String
+// generated
 ''';
 
 const _annotation = '''

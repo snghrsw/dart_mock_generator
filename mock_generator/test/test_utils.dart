@@ -2,7 +2,7 @@ import 'package:mock_generator/src/mock_generator.dart';
 import 'package:source_gen/source_gen.dart';
 
 const inputPrefixTemplate = '''
-import 'package:mock_annotation/mock_annotation.dart';
+import 'mock_annotation.dart';
 
 part 'mock_entity.g.dart';
 ''';

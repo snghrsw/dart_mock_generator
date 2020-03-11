@@ -28,7 +28,7 @@ void main() {
 }
 
 String _input = '''
-import 'package:mock_generator/src/mock_annotation.dart';
+import 'package:mock_annotation/mock_annotation.dart';
 
 part 'mock_entity.g.dart';
 
