@@ -1,27 +1,41 @@
-import 'package:mock_generator/src/mock_generator.dart';
-import 'package:source_gen/source_gen.dart';
+part of 'test_cases.dart';
 
-const inputPrefixTemplate = '''
-import 'mock_annotation.dart';
-
-part 'mock_entity.g.dart';
-''';
-
-const outputPrefixTemplate = '''
-// GENERATED CODE - DO NOT MODIFY BY HAND
-
-part of 'mock_entity.dart';
-
-// **************************************************************************
-// CreateMockGenerator
-// **************************************************************************
-''';
-
-const annotationTemplate = '''
-class Mock {
-  const Mock();
+PrimitiveEntity _$MockToPrimitiveEntity() {
+  const _faker = Faker();
+  return PrimitiveEntity(
+    intValue: _faker.randomGenerator.integer(99999),
+    stringValue: _faker.address.city(),
+    dateTimeValue: _faker.date.dateTime(),
+    childEntity: _ChildEntity.createMock(),
+  );
 }
-''';
 
-const generator = CreateMockGenerator();
-final PartBuilder builder = PartBuilder([generator], '.g.dart');
+class _ChildEntity {
+  const _ChildEntity({
+    this.intValue,
+  });
+  factory _ChildEntity.createMock() => _$MockToChildEntity();
+  final int intValue;
+}
+
+_ChildEntity _$MockToChildEntity() {
+  const _faker = Faker();
+  return _ChildEntity(
+    intValue: _faker.randomGenerator.integer(99999),
+  );
+}
+
+@Mock()
+class ListEntity {
+  const ListEntity({
+    this.listIntValue,
+    this.listStringValue,
+    this.listDynamicValue,
+    this.listDoubleValue,
+  });
+
+  final List<int> listIntValue;
+  final List<String> listStringValue;
+  final List<dynamic> listDynamicValue;
+  final List<double> listDoubleValue;
+}
