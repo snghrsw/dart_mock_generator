@@ -1,4 +1,4 @@
-name: Generatorのリリース
+name: Annotationのリリース
 
 on:
   push:
@@ -22,10 +22,9 @@ jobs:
         run: pub get
         working-directory: ./mock_annotation
 
-
-      - name: Run tests for Annotation
-        run: pub run test
-        working-directory: ./mock_annotation
+      # - name: Run tests
+      #   run: pub run test
+      #   working-directory: ./mock_annotation
 
       - name: Setup credentials
         working-directory: ./mock_annotation
