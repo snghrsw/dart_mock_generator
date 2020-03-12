@@ -1,5 +1,6 @@
 import 'package:analyzer/dart/element/type.dart';
 import 'package:analyzer/dart/element/element.dart';
+import 'package:dart_style/dart_style.dart';
 
 class CreateMockParser {
   String getParsedString(Element element) {
@@ -17,14 +18,14 @@ class CreateMockParser {
         .toList()
         .join('');
 
-    return '''
+    return DartFormatter().format('''
       ${element.name} _\$MockTo${element.name}() {
         const _faker = Faker();
         return ${element.name}(
           $fieldStrings
         );
       }
-      ''';
+      ''');
   }
 
   final String fakerDateTimeString = '_faker.date.dateTime()';
@@ -81,6 +82,31 @@ class CreateMockParser {
         return fakerEnumString(_elm.type.getDisplayString());
       }
 
+      // List
+      // if ((_elm.type as InterfaceType).isDartCoreList) {
+      //   return 'list:${(_elm.type as InterfaceType).getDisplayString()}';
+      // }
+
+      // List<int>
+      if (_elm.type.getDisplayString().contains('List<int>')) {
+        return '''_faker.randomGenerator.numbers(99999, _faker.randomGenerator.integer(10))''';
+      }
+
+      // List<String>
+      if (_elm.type.getDisplayString().contains('List<String>')) {
+        return '''_faker.randomGenerator.amount((_) => _faker.address.city(), 20, min: 0)''';
+      }
+
+      // List<double>
+      if (_elm.type.getDisplayString().contains('List<double>')) {
+        return '''_faker.randomGenerator.amount((_) => _faker.randomGenerator.decimal(), 20, min: 0)''';
+      }
+
+      // List<dynamic>
+      if (_elm.type.getDisplayString().contains('List<dynamic>')) {
+        return '''_faker.randomGenerator.amount((_) => _faker.address.city(), 20, min: 0)''';
+      }
+
       if (_elm.type is List) {
         return '[]';
       }
@@ -93,7 +119,7 @@ class CreateMockParser {
         return 'null';
       }
 
-      return 'null';
+      return fakerEnumString(_elm.type.getDisplayString());
     } catch (e) {
       print(e.toString());
       return 'null';

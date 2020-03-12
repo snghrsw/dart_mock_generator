@@ -20,22 +20,10 @@ class _ChildEntity {
 
 _ChildEntity _$MockToChildEntity() {
   const _faker = Faker();
+
   return _ChildEntity(
     intValue: _faker.randomGenerator.integer(99999),
   );
 }
 
-@Mock()
-class ListEntity {
-  const ListEntity({
-    this.listIntValue,
-    this.listStringValue,
-    this.listDynamicValue,
-    this.listDoubleValue,
-  });
-
-  final List<int> listIntValue;
-  final List<String> listStringValue;
-  final List<dynamic> listDynamicValue;
-  final List<double> listDoubleValue;
-}
+enum EnumData { data1, data2, data3 }

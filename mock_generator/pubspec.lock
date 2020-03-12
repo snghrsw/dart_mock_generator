@@ -156,7 +156,7 @@ packages:
     source: hosted
     version: "0.16.1"
   dart_style:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: dart_style
       url: "https://pub.dartlang.org"
@@ -233,19 +233,12 @@ packages:
     source: hosted
     version: "0.6.1+1"
   json_annotation:
-    dependency: "direct dev"
+    dependency: transitive
     description:
       name: json_annotation
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.1"
-  json_serializable:
-    dependency: "direct dev"
-    description:
-      name: json_serializable
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.2.5"
   logging:
     dependency: transitive
     description:
