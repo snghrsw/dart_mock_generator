@@ -1,4 +1,4 @@
-name: Annotationのリリース
+name: Generatorのリリース
 
 on:
   push:
