@@ -1,0 +1,50 @@
+name: Annotationのリリース
+
+on:
+  push:
+    branches: 
+      - master
+    paths:
+      - mock_generator/pubspec.yaml
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    container:
+      image:  google/dart:latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+
+      - name: Install dependencies
+        run: pub get
+        working-directory: ./mock_generator
+
+
+      - name: Run tests for Annotation
+        run: pub run test
+        working-directory: ./mock_generator
+
+      - name: Setup credentials
+        working-directory: ./mock_generator
+        run: | 
+          mkdir -p ~/.pub-cache 
+          cat <<EOF > ~/.pub-cache/credentials.json
+          {
+            "accessToken":"${{ secrets.DART_CREDENTIALS_ACCESS_TOKEN }}",
+            "refreshToken":"${{ secrets.DART_CREDENTIALS_REFRESH_TOKEN }}",
+            "tokenEndpoint":"https://accounts.google.com/o/oauth2/token",
+            "scopes": [ "openid", "https://www.googleapis.com/auth/userinfo.email" ],
+            "expiration": 1576508276459
+          }
+          EOF
+
+      - name: Publish
+        run: pub publish -f
+        working-directory: ./mock_generator
+
+      - name: Publish
+        run: pub publish -f
+        working-directory: ./mock_generator

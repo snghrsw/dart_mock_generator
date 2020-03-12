@@ -1,11 +1,10 @@
-name: Publish package to pub.dev
+name: Annotationのリリース
 
 on:
   push:
     branches: 
       - master
     paths:
-      - mock_generator/pubspec.yaml
       - mock_annotation/pubspec.yaml
 
 jobs:
@@ -18,14 +17,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
 
+
       - name: Install dependencies
         run: pub get
-      
-      - name: Run tests
+        working-directory: ./mock_annotation
+
+
+      - name: Run tests for Annotation
         run: pub run test
-        working-directory: ./mock_generator
-  
+        working-directory: ./mock_annotation
+
       - name: Setup credentials
+        working-directory: ./mock_annotation
         run: | 
           mkdir -p ~/.pub-cache 
           cat <<EOF > ~/.pub-cache/credentials.json
@@ -40,7 +43,7 @@ jobs:
 
       - name: Publish
         run: pub publish -f
-        working-directory: ./mock_generator
+        working-directory: ./mock_annotation
 
       - name: Publish
         run: pub publish -f
