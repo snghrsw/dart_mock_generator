@@ -43,7 +43,3 @@ jobs:
       - name: Publish
         run: pub publish -f
         working-directory: ./mock_annotation
-
-      - name: Publish
-        run: pub publish -f
-        working-directory: ./mock_annotation
