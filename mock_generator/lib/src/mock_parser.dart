@@ -112,7 +112,12 @@ class CreateMockParser {
         final className = _elm.type
             .getDisplayString()
             .substring(5, _elm.type.getDisplayString().length - 1);
-        return '''_faker.randomGenerator.amount((_) => $className.createMock(), 20, min: 0)''';
+        return '''
+        _faker.randomGenerator
+        .amount((_) => null, _faker.randomGenerator.integer(30), min: 0)
+        .map<$className>((dynamic _) => $className.createMock())
+        .toList()
+        ''';
       }
 
       if (_elm.type is List) {

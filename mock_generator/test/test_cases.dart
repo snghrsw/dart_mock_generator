@@ -83,7 +83,9 @@ ListClassEntity _\$MockToListClassEntity() {
   const _faker = Faker();
   return ListClassEntity(
     listChildValues: _faker.randomGenerator
-        .amount((_) => _ChildEntity.createMock(), 20, min: 0),
+        .amount((_) => null, _faker.randomGenerator.integer(30), min: 0)
+        .map<_ChildEntity>((dynamic _) => _ChildEntity.createMock())
+        .toList(),
   );
 }
 ''')
