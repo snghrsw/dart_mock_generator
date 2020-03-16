@@ -1,6 +1,6 @@
 name: mock_generator
 description: faker base mock generator
-version: 1.2.4+2
+version: 1.2.5
 homepage: https://github.com/snghrym
 
 environment:

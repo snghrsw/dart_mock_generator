@@ -107,6 +107,14 @@ class CreateMockParser {
         return '''_faker.randomGenerator.amount((_) => _faker.address.city(), 20, min: 0)''';
       }
 
+      // List<Class>
+      if (_elm.type.getDisplayString().contains('List<')) {
+        final className = _elm.type
+            .getDisplayString()
+            .substring(5, _elm.type.getDisplayString().length - 1);
+        return '''_faker.randomGenerator.amount((_) => $className.createMock(), 20, min: 0)''';
+      }
+
       if (_elm.type is List) {
         return '[]';
       }

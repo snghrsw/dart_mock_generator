@@ -77,3 +77,21 @@ class EnumEntity {
 
   final EnumData enumValue;
 }
+
+@ShouldGenerate('''
+ListClassEntity _\$MockToListClassEntity() {
+  const _faker = Faker();
+  return ListClassEntity(
+    listChildValues: _faker.randomGenerator
+        .amount((_) => _ChildEntity.createMock(), 20, min: 0),
+  );
+}
+''')
+@Mock()
+class ListClassEntity {
+  const ListClassEntity({
+    this.listChildValues,
+  });
+
+  final List<_ChildEntity> listChildValues;
+}
