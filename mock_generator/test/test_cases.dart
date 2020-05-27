@@ -37,8 +37,10 @@ ListEntity _\$MockToListEntity() {
   return ListEntity(
     listIntValue: _faker.randomGenerator
         .numbers(99999, _faker.randomGenerator.integer(10)),
-    listStringValue:
-        _faker.randomGenerator.amount((_) => _faker.address.city(), 20, min: 0),
+    listStringValue: _faker.randomGenerator
+        .amount((_) => _faker.address.city(), 20, min: 0)
+        .map((dynamic v) => v.toString())
+        .toList(),
     listDynamicValue:
         _faker.randomGenerator.amount((_) => _faker.address.city(), 20, min: 0),
     listDoubleValue: _faker.randomGenerator

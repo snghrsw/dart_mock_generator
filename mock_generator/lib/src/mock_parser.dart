@@ -94,7 +94,7 @@ class CreateMockParser {
 
       // List<String>
       if (_elm.type.getDisplayString().contains('List<String>')) {
-        return '''_faker.randomGenerator.amount((_) => _faker.address.city(), 20, min: 0)''';
+        return '''_faker.randomGenerator.amount((_) => _faker.address.city(), 20, min: 0).map((dynamic v) => v.toString()).toList()''';
       }
 
       // List<double>
